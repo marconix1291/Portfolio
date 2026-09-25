@@ -1,23 +1,24 @@
 /* style.css */
 :root {
-    /* Color Palette from planner/palette.png */
-    --bg-color: #FFF0D3;
+    /* Color Palette from Inspiration */
+    --bg-color: #e8e4db;
     --text-primary: #1a1a1a;
-    --text-secondary: #555555;
-    --accent: #CBECB3; /* Light green */
-    --accent-hover: #FFC9AB; /* Peach */
-    
+    --text-secondary: #4a4a4a;
+    --accent: #8b9c7b;
+    /* Moss green */
+    --accent-hover: #718063;
+
     /* Glassmorphism */
-    --glass-bg: rgba(255, 227, 171, 0.4); /* FFE3AB with opacity */
-    --glass-border: #DDDDDD;
-    
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.4);
+
     /* Layout */
     --max-width: 1200px;
     --spacing: 2rem;
-    
+
     /* Typography */
     --font-main: 'Inter', sans-serif;
-    
+
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -30,11 +31,16 @@
 
 body {
     background-color: var(--bg-color);
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-primary);
     font-family: var(--font-main);
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: none; /* For custom cursor */
+    cursor: none;
+    /* For custom cursor */
 }
 
 /* Custom Cursor */
@@ -82,14 +88,17 @@ a {
     align-items: center;
     padding: 2rem 5%;
     z-index: 100;
-    background: linear-gradient(to bottom, rgba(255, 240, 211, 0.9), transparent);
-    backdrop-filter: blur(10px);
+    background: transparent;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: 800;
     letter-spacing: -0.05em;
+    background: var(--bg-color);
+    padding: 0rem 0.5rem;
+    border-radius: 50%;
+    text-align: center;
 }
 
 .nav-links {
@@ -121,6 +130,23 @@ a {
     width: 100%;
 }
 
+/* Blurry Box */
+.blurrybox {
+    background: transparent;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--glass-border);
+    border-radius: 1rem;
+}
+
+.glass {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 1rem;
+}
+
 /* Sections */
 .section {
     min-height: 100vh;
@@ -145,6 +171,7 @@ a {
 
 .hero-content {
     max-width: 800px;
+    padding: 2rem;
 }
 
 .subtitle {
@@ -174,20 +201,28 @@ a {
     display: inline-block;
     padding: 1rem 2.5rem;
     border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition-smooth);
 }
 
 .primary-btn {
-    background-color: var(--accent);
-    color: #000;
-    border: 1px solid var(--accent);
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .primary-btn:hover {
-    background-color: transparent;
-    color: var(--accent);
+    background-color: #333333;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
 }
 
 /* About Section */
@@ -224,11 +259,13 @@ a {
 
 .project-card {
     display: block;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
 .project-card:hover .project-image {
@@ -237,7 +274,7 @@ a {
 
 .project-image {
     height: 300px;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -268,7 +305,10 @@ a {
 .footer {
     padding: 8rem 5% 4rem;
     text-align: center;
-    background: #FFE3AB; /* Using one of the palette colors */
+    background: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--glass-border);
 }
 
 .footer-title {
@@ -278,9 +318,10 @@ a {
 
 .email-link {
     font-size: 2rem;
-    color: var(--accent);
+    color: var(--bg-color);
     display: inline-block;
     margin-bottom: 4rem;
+
 }
 
 .social-links {
@@ -288,11 +329,14 @@ a {
     justify-content: center;
     gap: 2rem;
     margin-bottom: 4rem;
+    color: var(--accent);
+    text-shadow: var(--text-primary) 0.15rem 0.15rem 0.2rem;
 }
 
 .copyright {
-    color: var(--text-secondary);
+    color: var(--bg-color);
     font-size: 0.8rem;
+    text-shadow: var(--text-primary) 0.05rem 0.05rem 0.2rem;
 }
 
 /* Animations */
@@ -302,10 +346,21 @@ a {
     animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero-content .fade-in:nth-child(1) { animation-delay: 0.1s; }
-.hero-content .fade-in:nth-child(2) { animation-delay: 0.2s; }
-.hero-content .fade-in:nth-child(3) { animation-delay: 0.3s; }
-.hero-content .fade-in:nth-child(4) { animation-delay: 0.4s; }
+.hero-content .fade-in:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.hero-content .fade-in:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.hero-content .fade-in:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.hero-content .fade-in:nth-child(4) {
+    animation-delay: 0.4s;
+}
 
 @keyframes fadeIn {
     to {
@@ -319,15 +374,15 @@ a {
     .about-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .headline {
         font-size: 3rem;
     }
-    
+
     .custom-cursor {
         display: none;
     }
-    
+
     body {
         cursor: auto;
     }
